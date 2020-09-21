@@ -1,6 +1,6 @@
 import React from 'react';
 import countryList from '../countries.json';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 function CountriesList() {
 

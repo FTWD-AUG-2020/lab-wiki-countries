@@ -1,5 +1,6 @@
 import React from 'react';
 import countries from '../countries.json';
+import { Link } from 'react-router-dom';
 
 function CountryDetails(props) {
   //first map through countries
@@ -13,6 +14,14 @@ function CountryDetails(props) {
     <div className="flag">
       {country.name.common}
       {country.flag}
+      <ul>
+      {country.borders.map(border => {
+        let foundCountry = countries.find(country => country.cca3 === border)
+        return(
+          <li><Link to={`/${border}`}>{foundCountry.name.common}</Link></li>
+        );
+      })}
+      </ul>
     </div>
   );
 }
