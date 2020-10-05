@@ -5,21 +5,20 @@ import Navbar from './components/Navbar';
 import CountriesList from './components/CountriesList';
 import CountryDetails from './components/CountryDetails';
 import { Switch, Route } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
 
 function App() {
-  let [countries, setCountries] = useState([])
+  let [countries, setCountries] = useState([]);
   useEffect(() => {
     async function getData() {
-      console.log("banana")
-      let res = await axios.get("https://countries.tech-savvy.tech/countries")
-      console.log(res)
-      setCountries(res.data)
-    }
-    console.log("zuchinni")
-    getData()
+      console.log('banana');
+      let res = await axios.get('https://countries.tech-savvy.tech/countries');
 
-  }, [])
+      setCountries(res.data);
+    }
+    console.log('zuchinni');
+    getData();
+  }, []);
 
   return (
     <div className="App">
@@ -28,11 +27,15 @@ function App() {
       {/* Create Switch  */}
 
       <Switch>
-        <Route path="/:id" render={(props) => <CountryDetails countries={countries} {...props} />} />
+        <Route
+          path="/:id"
+          render={(props) => (
+            <CountryDetails countries={countries} {...props} />
+          )}
+        />
       </Switch>
     </div>
   );
 }
-
 
 export default App;
